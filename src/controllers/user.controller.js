@@ -46,6 +46,12 @@ export const create_user = async (req, res) => {
                 message: 'USERNAME MUST BE 3-30 CHARACTERS USING LETTERS, NUMBERS, _ OR -',
             });
         }
+        if (['login', 'register', 'settings', 'portfolio', 'preview', 'p', 'api', 'auth'].includes(cleanUsername)) {
+            return res.status(400).json({
+                success: false,
+                message: 'USERNAME IS NOT AVAILABLE',
+            });
+        }
 
         // Check for existing email or username
         const existingUser = await getUserByEmail(cleanEmail);

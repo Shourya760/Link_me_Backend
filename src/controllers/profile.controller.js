@@ -62,6 +62,12 @@ export const update_my_profile = async (req, res) => {
 
         if (profileData.username) {
             profileData.username = String(profileData.username).trim().toLowerCase();
+            if (['login', 'register', 'settings', 'portfolio', 'preview', 'p', 'api', 'auth'].includes(profileData.username)) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'USERNAME IS NOT AVAILABLE',
+                });
+            }
         }
         if (profileData.email) {
             profileData.email = String(profileData.email).trim().toLowerCase();
