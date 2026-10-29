@@ -125,10 +125,18 @@ export const login_user = async (req, res) => {
         const user = await getUserByEmail(cleanEmail, { includePassword: true });
 
         // Verify account and password
-        if (!user || user.status !== 'active') {
+        if (!user) {
             return res.status(401).json({
                 success: false,
-                message: 'INVALID EMAIL OR PASSWORD'
+                message: 'USER NOT FOUND'
+            });
+        }
+
+        // Verify account and password
+        if (user.status !== 'active') {
+            return res.status(401).json({
+                success: false,
+                message: 'USER IS UNACTIVE'
             });
         }
 
