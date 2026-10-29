@@ -10,11 +10,22 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
 
-const allowedOrigins = [
-    process.env.CLIENT_URL,
+const configuredClientOrigins = (process.env.CLIENT_URL || '')
+    .split(',')
+    .map((value) => {
+        try {
+            return new URL(value.trim()).origin;
+        } catch {
+            return null;
+        }
+    })
+    .filter(Boolean);
+
+const allowedOrigins = [...new Set([
+    ...configuredClientOrigins,
+    "https://linkme-k4qb.onrender.com",
     "http://localhost:5173",
-    "https://849ttb2k-5173.inc1.devtunnels.ms/"
-].filter(Boolean);
+])];
 
 app.use(
     cors({
