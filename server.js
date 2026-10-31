@@ -23,7 +23,6 @@ const configuredClientOrigins = (process.env.CLIENT_URL || '')
 
 const allowedOrigins = [...new Set([
     ...configuredClientOrigins,
-    "https://linkme-k4qb.onrender.com",
     "http://localhost:5173",
 ])];
 

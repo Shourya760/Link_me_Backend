@@ -1,4 +1,4 @@
-import User from '../Schema/userSchema.js';
+import User from '../schema/userSchema.js';
 
 export const getUserByEmail = async (email, { includePassword = false } = {}) => {
     const query = User.findOne({ email });

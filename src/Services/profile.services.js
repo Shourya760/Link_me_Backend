@@ -1,4 +1,4 @@
-import Profile from '../Schema/profileSchema.js';
+import Profile from '../schema/profileSchema.js';
 
 export const getProfileByUserId = async (userId) => Profile.findOne({ userId });
 

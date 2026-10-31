@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import { hashPassword, verifyPassword } from '../utils/password.js';
 import { createToken } from '../utils/token.js';
-import { uploadToCloudinary } from '../Services/cloudinary.services.js';
-import { createUser, deleteUserById, getUserByEmail, updateUserById } from '../Services/user.services.js';
-import { createProfile, getProfileByUsername } from '../Services/profile.services.js';
+import { uploadToCloudinary } from '../services/cloudinary.services.js';
+import { createUser, deleteUserById, getUserByEmail, updateUserById } from '../services/user.services.js';
+import { createProfile, getProfileByUsername } from '../services/profile.services.js';
 
 const formatUser = (user) => ({
     id: user._id,

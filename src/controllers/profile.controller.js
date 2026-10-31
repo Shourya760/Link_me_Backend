@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { getProfileByUserId, getProfileByUsername, updateProfileByUserId } from '../Services/profile.services.js';
-import { getUserByEmail, updateUserById } from '../Services/user.services.js';
+import { getProfileByUserId, getProfileByUsername, updateProfileByUserId } from '../services/profile.services.js';
+import { getUserByEmail, updateUserById } from '../services/user.services.js';
 
 const editableFields = [
     'username', 'name', 'email', 'title', 'bio', 'avatar', 'socials',
